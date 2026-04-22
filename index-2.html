@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Adil Ahmad Shah | Assistant Professor of Economics · VIT Vellore</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744; --navy-light: #243460;
+      --gold: #b8933a; --gold-light: #d4aa5a;
+      --cream: #faf8f3; --warm-white: #f5f2ea;
+      --text: #2c2c2c; --text-muted: #666;
+      --border: #ddd8cc; --section-bg: #f0ede4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: var(--navy); border-bottom: 2px solid var(--gold); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 60px; }
+    .nav-logo { font-family: 'EB Garamond', serif; color: var(--cream); font-size: 1.1rem; letter-spacing: 0.04em; text-decoration: none; }
+    .nav-logo span { color: var(--gold-light); font-style: italic; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #c8c4bc; text-decoration: none; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* HERO */
+    #home { min-height: 100vh; background: var(--navy); display: flex; align-items: center; padding-top: 60px; position: relative; overflow: hidden; }
+    #home::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(184,147,58,0.08) 0%, transparent 55%), radial-gradient(ellipse at 10% 80%, rgba(184,147,58,0.05) 0%, transparent 50%); }
+    #home::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(180deg, rgba(184,147,58,0.04) 0%, transparent 100%); border-left: 1px solid rgba(184,147,58,0.15); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+    .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .hero-name { font-family: 'EB Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.6rem); color: var(--cream); line-height: 1.15; margin-bottom: 0.4rem; font-weight: 500; }
+    .hero-name em { color: var(--gold-light); font-style: italic; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #9fa8c0; margin-bottom: 1.6rem; font-weight: 300; font-style: italic; }
+    .hero-desc { color: #8d95a8; font-size: 0.95rem; line-height: 1.8; max-width: 440px; margin-bottom: 2.4rem; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--navy); padding: 0.7rem 1.8rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid rgba(184,147,58,0.5); color: var(--gold-light); padding: 0.7rem 1.8rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* HERO CARD */
+    .hero-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(184,147,58,0.2); padding: 2.5rem; text-align: center; position: relative; }
+    .hero-card::before { content: ''; position: absolute; top: -1px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .profile-avatar { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--gold); background: linear-gradient(135deg, #2a3a5c, #1a2744); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-family: 'EB Garamond', serif; font-size: 2.4rem; color: var(--gold-light); overflow: hidden; }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .card-name { font-family: 'EB Garamond', serif; font-size: 1.4rem; color: var(--cream); margin-bottom: 0.3rem; }
+    .card-role { font-size: 0.82rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.2rem; }
+    .card-uni { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #8d95a8; margin-bottom: 1.5rem; font-size: 1rem; }
+    .card-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; border-top: 1px solid rgba(184,147,58,0.2); padding-top: 1.2rem; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'EB Garamond', serif; font-size: 1.6rem; color: var(--gold-light); display: block; line-height: 1; }
+    .stat-label { font-size: 0.7rem; color: #6a7288; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 3rem; }
+    .section-label { font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'EB Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--navy); font-weight: 500; line-height: 1.2; }
+    .section-divider { width: 48px; height: 2px; background: var(--gold); margin-top: 0.8rem; }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start; }
+    .about-text p { margin-bottom: 1.2rem; color: #444; font-size: 0.97rem; line-height: 1.9; }
+    .about-interests { margin-top: 1.8rem; }
+    .interests-title { font-family: 'EB Garamond', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 0.8rem; font-weight: 600; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { background: var(--warm-white); border: 1px solid var(--border); padding: 0.3rem 0.9rem; font-size: 0.78rem; color: var(--navy); letter-spacing: 0.04em; }
+    .info-card { background: var(--navy); padding: 2rem; border-top: 3px solid var(--gold); }
+    .info-card h4 { font-family: 'EB Garamond', serif; font-size: 1.1rem; color: var(--gold-light); margin-bottom: 1.2rem; }
+    .info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .info-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .info-icon { color: var(--gold); font-size: 1rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .info-label { font-size: 0.7rem; color: #6a7288; text-transform: uppercase; letter-spacing: 0.1em; }
+    .info-value { font-size: 0.88rem; color: #c8c4bc; margin-top: 0.1rem; }
+    .info-value a { color: var(--gold); text-decoration: none; }
+    .info-value a:hover { color: var(--gold-light); }
+
+    /* RESEARCH */
+    #research { background: var(--section-bg); }
+    .papers-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .paper-card { background: var(--cream); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.8rem 2rem; transition: box-shadow 0.2s; }
+    .paper-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .paper-status { display: inline-block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; }
+    .status-published { background: #e8f5e9; color: #2e7d32; }
+    .status-working { background: #fff3e0; color: #e65100; }
+    .status-progress { background: #e3f2fd; color: #1565c0; }
+    .paper-title { font-family: 'EB Garamond', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.4rem; font-weight: 500; line-height: 1.4; }
+    .paper-meta { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.7rem; font-style: italic; }
+    .paper-abstract { font-size: 0.87rem; color: #555; line-height: 1.75; }
+    .paper-link { display: inline-block; margin-top: 0.8rem; font-size: 0.78rem; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .paper-link:hover { border-color: var(--gold); }
+
+    /* TEACHING */
+    #teaching { background: var(--cream); }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .course-card { background: var(--warm-white); border: 1px solid var(--border); padding: 1.8rem; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .course-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+    .course-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .course-level { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 0.6rem; }
+    .course-name { font-family: 'EB Garamond', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.4rem; font-weight: 500; }
+    .course-code { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+    .course-desc { font-size: 0.86rem; color: #555; line-height: 1.7; }
+
+    /* CV */
+    #cv { background: var(--section-bg); }
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .cv-block { margin-bottom: 2.2rem; }
+    .cv-section-title { font-family: 'EB Garamond', serif; font-size: 1.2rem; color: var(--navy); font-weight: 600; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); position: relative; }
+    .cv-section-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 40px; height: 2px; background: var(--gold); }
+    .cv-item { margin-bottom: 1.2rem; }
+    .cv-year { font-size: 0.75rem; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+    .cv-degree { font-size: 0.95rem; color: var(--navy); font-weight: 700; margin-bottom: 0.1rem; }
+    .cv-institution { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+    .cv-download { margin-top: 2rem; text-align: center; }
+
+    /* CONTACT */
+    #contact { background: var(--navy); }
+    #contact .section-title { color: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info p { color: #8d95a8; font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(184,147,58,0.15); }
+    .contact-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+    .contact-label { font-size: 0.7rem; color: #6a7288; text-transform: uppercase; letter-spacing: 0.1em; }
+    .contact-value { font-size: 0.9rem; color: #c8c4bc; }
+    .contact-value a { color: #c8c4bc; text-decoration: none; }
+    .contact-value a:hover { color: var(--gold-light); }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8d95a8; margin-bottom: 0.5rem; font-weight: 700; }
+    .form-group input, .form-group textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(184,147,58,0.2); color: var(--cream); padding: 0.8rem 1rem; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { height: 120px; resize: vertical; }
+    ::placeholder { color: #4a5268; }
+
+    footer { background: #111928; border-top: 1px solid rgba(184,147,58,0.2); padding: 1.5rem 2rem; text-align: center; }
+    .footer-text { font-size: 0.8rem; color: #4a5268; }
+    .footer-text a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .hero-inner, .about-grid, .cv-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#home">Dr. <span>Adil Ahmad Shah</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Assistant Professor of Economics</p>
+        <h1 class="hero-name">Dr. <em>Adil Ahmad Shah</em></h1>
+        <p class="hero-title">Department of Social Sciences &amp; Languages · VIT Vellore</p>
+        <p class="hero-desc">
+          My research focuses on International Macroeconomics, Shock Transmission, and Safer Investments. The work has implications for countries' policymaking, fund allocation across asset categories, and risk management.
+        </p>
+        <div class="hero-buttons">
+          <a href="#research" class="btn-primary">View Research</a>
+          <a href="cv.pdf" class="btn-outline" download>Download CV</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="profile-avatar">
+          <!-- Replace with your photo: <img src="photo.jpg" alt="Dr. Adil Ahmad Shah"> -->
+          AAS
+        </div>
+        <p class="card-name">Dr. Adil Ahmad Shah</p>
+        <p class="card-role">Assistant Professor</p>
+        <p class="card-uni">VIT Vellore</p>
+        <div class="card-stats">
+          <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Papers</span></div>
+          <div class="stat"><span class="stat-num">5</span><span class="stat-label">Courses</span></div>
+          <div class="stat"><span class="stat-num">2024</span><span class="stat-label">Joined</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Introduction</p>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Born in Kashmir (J&amp;K), I did my early schooling at a boarding school — JNV Srinagar. I currently hold the position of Assistant Professor of Economics at VIT Vellore, where I have been a faculty member since May 2024. I received my Ph.D. in Economics from Shri Mata Vaishno Devi University in December 2022, under the supervision of Dr. Arif Billah Dar.</p>
+          <p>My research lies at the intersection of International Macroeconomics and Risk Management. I am particularly interested in shock transmission in financial assets, fund allocation, and risk management — specifically portfolio diversification. My work combines an understanding of emerging themes in finance and broader asset categories with rigorous empirical methods to evaluate risk transmission and management strategies.</p>
+          <p>Before joining VIT Vellore, I worked on various gold policy reports at the India Gold Policy Centre (IGPC) at IIM Ahmedabad. Under the mentorship of Dr. Niyati Bhanja, I also supported teaching the Microeconomics course at MICA Ahmedabad. I have presented my work at international conferences, including the flagship IIMA Annual Gold and Gold Markets Conferences of IGPC.</p>
+          <p>With a deep interest in Horticulture and a one-year diploma in Basic Horticulture from SKUAST-K, I along with my family run a profitable High-Density Apple Nursery in Kashmir, creating seasonal employment for local workers.</p>
+          <div class="about-interests">
+            <p class="interests-title">Research Interests</p>
+            <div class="tag-list">
+              <span class="tag">International Macroeconomics</span>
+              <span class="tag">Shock Transmission</span>
+              <span class="tag">Portfolio Diversification</span>
+              <span class="tag">Risk Management</span>
+              <span class="tag">Financial Assets</span>
+              <span class="tag">Applied Econometrics</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-sidebar">
+          <div class="info-card">
+            <h4>Quick Info</h4>
+            <div class="info-row">
+              <span class="info-icon">🎓</span>
+              <div class="info-content">
+                <div class="info-label">Ph.D.</div>
+                <div class="info-value">Shri Mata Vaishno Devi University, Katra, J&amp;K — 2022</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">🏛️</span>
+              <div class="info-content">
+                <div class="info-label">Position</div>
+                <div class="info-value">Assistant Professor of Economics, VIT Vellore</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">📍</span>
+              <div class="info-content">
+                <div class="info-label">Location</div>
+                <div class="info-value">Vellore, Tamil Nadu, India</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">✉️</span>
+              <div class="info-content">
+                <div class="info-label">Email</div>
+                <div class="info-value">
+                  <a href="mailto:adilshah.iima@gmail.com">adilshah.iima@gmail.com</a><br>
+                  <a href="mailto:adil.shah@vit.ac.in">adil.shah@vit.ac.in</a>
+                </div>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">🔗</span>
+              <div class="info-content">
+                <div class="info-label">Profiles</div>
+                <div class="info-value">
+                  <a href="https://scholar.google.com/citations?user=x8tcR70AAAAJ&hl=en" target="_blank">Google Scholar</a> ·
+                  <a href="https://www.linkedin.com/in/adil-shah-a0739217a/" target="_blank">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Scholarship</p>
+        <h2 class="section-title">Research &amp; Publications</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="papers-list">
+
+        <!-- PUBLISHED -->
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Is gold a preferable diversifier of cleaner equity risk across diverse scenarios? Evidence from multidimensional connectedness and spillover measures</h3>
+          <p class="paper-meta"><em>Energy</em> · Vol. 305, Article 132411 · 2024 · Co-authored with Arvind Sahay</p>
+          <p class="paper-abstract">The study explores the risk management potential of historical (gold and crude oil) and modern (bitcoin) assets against shocks in clean energy stocks. Using generalised VAR-based connectedness measures and a DCC-GARCH model on daily data from October 2014 to April 2023, we find that downside shock transmission (bad spillovers) outperforms upside transmission. Gold is shown to be a preferable diversifier of cleaner equity risk on average, during distress events, in downside markets, and across all investment horizons.</p>
+          <a href="https://doi.org/10.1016/j.energy.2024.132411" target="_blank" class="paper-link">View Paper →</a>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Do gold and the US dollar diversify global sectoral risk? Evidence from connectedness and dynamic conditional correlation measures</h3>
+          <p class="paper-meta"><em>The Journal of Economic Asymmetries</em> · 2023</p>
+          <p class="paper-abstract">Explores global sectoral connectedness and the risk management potential of gold and the US dollar using variance decomposition-based spillover measures. Findings reveal that industrial and financial sectors are systematically important for transmitting global sectoral shocks, and that connectedness dominates in downside markets and during crisis events including the European Debt Crisis, Brexit, US–China trade war, and COVID-19.</p>
+          <a href="https://doi.org/10.1016/j.jeca.2023.e00304" target="_blank" class="paper-link">View Paper →</a>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Non-linear relationship between oil and cryptocurrencies: Evidence from returns and shocks</h3>
+          <p class="paper-meta"><em>International Review of Financial Analysis</em> · 2023</p>
+          <p class="paper-abstract">Examines the nonlinear relationship between oil returns/shocks and cryptocurrencies from March 2018 to October 2021 using the cross-quantilogram methodology. Finds that positive correlation between oil and crypto returns in normal and bullish markets turns negative across all market conditions, with oil demand shock fluctuations driving significant cryptocurrency movements in bearish markets.</p>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Aggregate, asymmetric and frequency-based spillover among equity, precious metals, and cryptocurrency</h3>
+          <p class="paper-meta"><em>Resources Policy</em> · 2023</p>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Asymmetric, time and frequency-based spillover transmission in financial and commodity markets</h3>
+          <p class="paper-meta"><em>The Journal of Economic Asymmetries</em> · 2022</p>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Exploring diversification opportunities across commodities and financial markets: Evidence from time-frequency based spillovers</h3>
+          <p class="paper-meta"><em>Resources Policy</em> · 2021</p>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Dynamics of connectedness across crude oil, precious metals and exchange rate: Evidence from time and frequency domains</h3>
+          <p class="paper-meta"><em>Resources Policy</em> · 2021</p>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-published">Published</span>
+          <h3 class="paper-title">Are precious metals and equities immune to monetary and fiscal policy uncertainties?</h3>
+          <p class="paper-meta"><em>Resources Policy</em> · 2021</p>
+        </div>
+
+        <!-- WORKING PAPERS -->
+        <div class="paper-card">
+          <span class="paper-status status-working">Working Paper</span>
+          <h3 class="paper-title">Dynamics of Connectedness across Gold, Conventional and Cleaner Sectoral Indices of India with portfolio implications</h3>
+        </div>
+
+        <div class="paper-card">
+          <span class="paper-status status-working">Working Paper</span>
+          <h3 class="paper-title">Evaluating Risk, Alternative Investments and optimal portfolio allocation in India: Insights from quantile spillovers and wavelet quantile correlation</h3>
+        </div>
+
+        <!-- WORK IN PROGRESS -->
+        <div class="paper-card">
+          <span class="paper-status status-progress">Work in Progress</span>
+          <h3 class="paper-title">Determinants of gold reserve demand by central banks: Does policy uncertainty across countries have any role to play?</h3>
+          <p class="paper-meta">Work in Progress · Expected Completion: 2027</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Pedagogy</p>
+        <h2 class="section-title">Teaching</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="courses-grid">
+
+        <div class="course-card">
+          <p class="course-level">Undergraduate · Core</p>
+          <h3 class="course-name">Introductory Microeconomics</h3>
+          <p class="course-code">VIT Vellore</p>
+          <p class="course-desc">Introduction to microeconomic theory covering consumer behaviour, firm theory, market structures, and welfare analysis.</p>
+        </div>
+
+        <div class="course-card">
+          <p class="course-level">Undergraduate · Core</p>
+          <h3 class="course-name">Macroeconomics</h3>
+          <p class="course-code">VIT Vellore</p>
+          <p class="course-desc">National income accounting, aggregate demand and supply, fiscal and monetary policy in a closed economy.</p>
+        </div>
+
+        <div class="course-card">
+          <p class="course-level">Undergraduate · Elective</p>
+          <h3 class="course-name">International Economics</h3>
+          <p class="course-code">VIT Vellore</p>
+          <p class="course-desc">Trade theory, international financial markets, exchange rate determination, and global macroeconomic policy coordination.</p>
+        </div>
+
+        <div class="course-card">
+          <p class="course-level">Undergraduate · Elective</p>
+          <h3 class="course-name">Economics of Money, Banking &amp; Financial Markets</h3>
+          <p class="course-code">VIT Vellore</p>
+          <p class="course-desc">Monetary theory, banking systems, financial instruments, and the role of central banks in economic stabilisation.</p>
+        </div>
+
+        <div class="course-card">
+          <p class="course-level">Graduate · Support</p>
+          <h3 class="course-name">Microeconomics</h3>
+          <p class="course-code">MICA Ahmedabad · under Dr. Niyati Bhanja</p>
+          <p class="course-desc">Supported graduate-level Microeconomics instruction, content development, and evaluation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Curriculum Vitae</p>
+        <h2 class="section-title">Academic Background</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="cv-grid">
+
+        <!-- LEFT COLUMN -->
+        <div>
+          <div class="cv-block">
+            <h3 class="cv-section-title">Education</h3>
+            <div class="cv-item">
+              <div class="cv-year">2022</div>
+              <div class="cv-degree">Ph.D. in Economics</div>
+              <div class="cv-institution">Shri Mata Vaishno Devi University, Katra, J&amp;K</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">2017</div>
+              <div class="cv-degree">M.A. in Economics</div>
+              <div class="cv-institution">University of Kashmir</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">2015</div>
+              <div class="cv-degree">B.A. in Economics</div>
+              <div class="cv-institution">University of Kashmir</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">2014</div>
+              <div class="cv-degree">Diploma in Basic Horticulture</div>
+              <div class="cv-institution">SKUAST-K</div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3 class="cv-section-title">Exams Qualified</h3>
+            <div class="cv-item">
+              <div class="cv-year">2017 &amp; 2019</div>
+              <div class="cv-degree">UGC-NET in Economics</div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3 class="cv-section-title">Certifications &amp; Fieldwork</h3>
+            <div class="cv-item">
+              <div class="cv-year">2024</div>
+              <div class="cv-degree">Financial Planning (Advanced)</div>
+              <div class="cv-institution">National Institute of Securities Markets (NISM)</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">2014</div>
+              <div class="cv-degree">Data Collection — Annual Status of Education Report (ASER)</div>
+              <div class="cv-institution">PRATHAM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div>
+          <div class="cv-block">
+            <h3 class="cv-section-title">Academic Positions</h3>
+            <div class="cv-item">
+              <div class="cv-year">May 2024 – Present</div>
+              <div class="cv-degree">Assistant Professor of Economics</div>
+              <div class="cv-institution">VIT Vellore, Tamil Nadu</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">Sep 2022 – Apr 2024</div>
+              <div class="cv-degree">Gold Policy Researcher</div>
+              <div class="cv-institution">India Gold Policy Centre (IGPC), IIM Ahmedabad</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">Feb 2022 – Aug 2022</div>
+              <div class="cv-degree">Teaching Support — Microeconomics</div>
+              <div class="cv-institution">MICA Ahmedabad (under Dr. Niyati Bhanja)</div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3 class="cv-section-title">Conference Presentations</h3>
+            <div class="cv-item">
+              <div class="cv-year">January 2020</div>
+              <div class="cv-degree">The Indian Econometric Society (TIES)</div>
+              <div class="cv-institution">Madurai Kamaraj University, Tamil Nadu</div>
+            </div>
+            <div class="cv-item">
+              <div class="cv-year">2023 &amp; 2024</div>
+              <div class="cv-degree">Gold Markets Conference</div>
+              <div class="cv-institution">IGPC, IIM Ahmedabad</div>
+            </div>
+          </div>
+
+          <div class="cv-download">
+            <a href="cv.pdf" class="btn-primary" download>⬇ Download Full CV (PDF)</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label" style="color:var(--gold-light);">Get in Touch</p>
+        <h2 class="section-title">Contact</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>I welcome enquiries from students, fellow researchers, and collaborators. Feel free to reach out regarding research collaborations, seminar invitations, or any questions about my work.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <div class="contact-text">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                  <a href="mailto:adilshah.iima@gmail.com">adilshah.iima@gmail.com</a><br>
+                  <a href="mailto:adil.shah@vit.ac.in">adil.shah@vit.ac.in</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🏛️</span>
+              <div class="contact-text">
+                <div class="contact-label">Office</div>
+                <div class="contact-value">Dept. of Social Sciences &amp; Languages, VIT Vellore, Tamil Nadu</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🔗</span>
+              <div class="contact-text">
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value"><a href="https://www.linkedin.com/in/adil-shah-a0739217a/" target="_blank">adil-shah-a0739217a</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🎓</span>
+              <div class="contact-text">
+                <div class="contact-label">Google Scholar</div>
+                <div class="contact-value"><a href="https://scholar.google.com/citations?user=x8tcR70AAAAJ&hl=en" target="_blank">View Profile →</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="email@example.com">
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="Research collaboration, seminar invitation…">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Your message…"></textarea>
+          </div>
+          <a href="#" class="btn-primary" style="display:inline-block; margin-top:0.5rem;">Send Message</a>
+          <p style="font-size:0.75rem; color:#4a5268; margin-top:0.8rem;">
+            * To activate the contact form, sign up at <a href="https://formspree.io" target="_blank" style="color:var(--gold);">Formspree.io</a> (free) and update the form action URL.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">
+      © 2025 Dr. Adil Ahmad Shah · Assistant Professor of Economics · VIT Vellore ·
+      Built with <a href="https://pages.github.com" target="_blank">GitHub Pages</a>
+    </p>
+  </footer>
+
+</body>
+</html>
